@@ -13,7 +13,7 @@ It also assumes that you:
 It will try to automatically find where your Arma 3 install is based on `steamapps/libraryfolders.vdf` in your initial Steam install folder.
 
 # Installation
-Clone the repo (as below) or [download it as a zip](/archive/master.zip) and extract it somewhere:
+Clone the repo (as below) or [download it as a zip](https://github.com/thomotron/arma-3-workshop-cleaner/archive/master.zip) and extract it somewhere:
 ```sh
 git clone https://github.com/thomotron/arma-3-workshop-cleaner.git
 ```
