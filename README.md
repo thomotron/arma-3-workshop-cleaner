@@ -1,5 +1,6 @@
-# Arma 3 Workshop Cleaner
-Unsubscribes from addons that aren't in any installed modlists.
+<h1 align="center">Arma 3 Workshop Cleaner</h1>
+<p align="center">Unsubscribes from addons that aren't in any installed modlists.</p>
+<p align="center"><img src=https://i.imgur.com/plbQJff.gif width="70%" /></p>
 
 I ran into a lot of trouble with disk space after having to switch out modlists for short campaigns with wildly different themes, so I made this.
 It finds all the currently-installed addons, compares them to the contents of each modlist, and unsubscribes from any mods that aren't in any of them. Simple.
