@@ -14,7 +14,9 @@ It also assumes that you:
 It will try to automatically find where your Arma 3 install is based on `steamapps/libraryfolders.vdf` in your initial Steam install folder.
 
 # Installation
-Clone the repo (as below) or [download it as a zip](https://github.com/thomotron/arma-3-workshop-cleaner/archive/master.zip) and extract it somewhere:
+Get the [latest .exe](https://github.com/thomotron/arma-3-workshop-cleaner/releases/latest) if you don't want to fiddle around with Python.
+
+Otherwise, clone the repo (as below) or [download it as a zip](https://github.com/thomotron/arma-3-workshop-cleaner/archive/master.zip) and extract it somewhere:
 ```sh
 git clone https://github.com/thomotron/arma-3-workshop-cleaner.git
 ```
