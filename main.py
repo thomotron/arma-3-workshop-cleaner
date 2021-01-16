@@ -15,7 +15,7 @@ def find_arma_workshop_dir():
     # Check if Arma is installed in the default library first
     # If not, we'll need to scan the other library folders for it
     if path.exists(path.join(steam_install_path, 'steamapps/appmanifest_107410.acf')):
-        return path.join(steam_install_path, 'steamapps/workshop/107410/')
+        return path.join(steam_install_path, 'steamapps/workshop/content/107410/')
 
     # Make sure the libraryfolders.vdf manifest is in the usual Steam install location
     if not path.exists(path.join(steam_install_path, 'steamapps/libraryfolders.vdf')):
