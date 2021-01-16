@@ -9,22 +9,25 @@ from steamfiles import acf
 modlist_id_pattern = re.compile(r'<id>steam:(\d+)</id>', re.MULTILINE)
 modlist_dir_path = path.join(getenv('LOCALAPPDATA'), 'Arma 3 Launcher/Presets')
 steam_install_path = 'C:/Program Files (x86)/Steam/'
+steam_library_manifest_suffix = 'steamapps/libraryfolders.vdf'
+arma_manifest_suffix = 'steamapps/appmanifest_107410.acf'
+arma_workshop_suffix = 'steamapps/workshop/content/107410/'
 
 
 def find_arma_workshop_dir():
     # Check if Arma is installed in the default library first
     # If not, we'll need to scan the other library folders for it
-    if path.exists(path.join(steam_install_path, 'steamapps/appmanifest_107410.acf')):
-        return path.join(steam_install_path, 'steamapps/workshop/content/107410/')
+    if path.exists(path.join(steam_install_path, arma_manifest_suffix)):
+        return path.join(steam_install_path, arma_workshop_suffix)
 
     # Make sure the libraryfolders.vdf manifest is in the usual Steam install location
-    if not path.exists(path.join(steam_install_path, 'steamapps/libraryfolders.vdf')):
+    if not path.exists(path.join(steam_install_path, steam_library_manifest_suffix)):
         raise FileNotFoundError('Unable to find Steam library folder metadata')
 
     # Load libraryfolders.vdf and pull out each of the library folder paths from it
     # Library paths are indexed under numeric keys that are parsed as strings, so we'll just drop the two other keys
     # and iterate over the remaining ones which will be the library paths
-    with open(path.join(steam_install_path, 'steamapps/libraryfolders.vdf'), 'r') as file:
+    with open(path.join(steam_install_path, steam_library_manifest_suffix), 'r') as file:
         lib_path_data = acf.load(file)
     lib_folder_paths = []
     for key in lib_path_data['LibraryFolders'].keys() - ['TimeNextStatsReport', 'ContentStatsID']:
@@ -32,8 +35,8 @@ def find_arma_workshop_dir():
 
     # Look in each of the library paths for the Arma 3 app manifest file
     for lib_folder_path in lib_folder_paths:
-        if path.exists(path.join(lib_folder_path, 'steamapps/appmanifest_107410.acf')):
-            return path.join(lib_folder_path, 'steamapps/workshop/content/107410/')
+        if path.exists(path.join(lib_folder_path, arma_manifest_suffix)):
+            return path.join(lib_folder_path, arma_workshop_suffix)
 
     return None
 
